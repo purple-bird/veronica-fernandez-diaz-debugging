@@ -28,31 +28,37 @@ function checkGuess() {
   attempts = attempts + 1;
 
   hideAllMessages();
-
+  
+  // What happens when the guess is equal to the target number
   if (guess === targetNumber) {
     numberOfGuessesMessage.style.display = '';
     numberOfGuessesMessage.innerHTML = `You made ${attempts} guesses`;
 
     correctMessage.style.display = '';
-
+  
     submitButton.disabled = true;
     guessInput.disabled = true;
   }
 
+  // What happens when the guess is not equal to the target number
   if (guess !== targetNumber) {
+    //What happens when guess is lower than target number
     if (guess < targetNumber) {
       tooLowMessage.style.display = '';
     } else {
-      tooLowMessage.style.display = '';
+      tooHighMessage.style.display = '';
     }
 
+    // Calculating the number of attempts left
     const remainingAttempts = maxNumberOfAttempts - attempts;
 
+    // Showing the number of guesses left
     numberOfGuessesMessage.style.display = '';
     numberOfGuessesMessage.innerHTML = `You guessed ${guess}. <br> ${remainingAttempts} guesses remaining`;
   }
-
-  if (attempts ==== maxNumberOfAttempts) {
+  
+  // What happens if user reaches max number of attempts
+  if (attempts === maxNumberOfAttempts) {
     submitButton.disabled = true;
     guessInput.disabled = true;
   }
@@ -62,19 +68,20 @@ function checkGuess() {
   resetButton.style.display = '';
 }
 
+// Hide messages
 function hideAllMessages() {
-  for (let elementIndex = 0; elementIndex <= messages.length; elementIndex++) {
+  for (let elementIndex = 0; elementIndex < messages.length; elementIndex++) {
     messages[elementIndex].style.display = 'none';
   }
 }
 
-funtion setup() {
+function setup() {
   // Get random number
   targetNumber = getRandomNumber(1, 100);
   console.log(`target number: ${targetNumber}`);
 
   // Reset number of attempts
-  maxNumberOfAttempts = 0;
+  attempts = 0;
 
   // Enable the input and submit button
   submitButton.disabeld = false;
