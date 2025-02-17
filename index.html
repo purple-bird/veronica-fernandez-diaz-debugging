@@ -15,10 +15,13 @@
         less?
       </p>
       <div>
+        <!--The range of the numbers that can be guessed-->
         <input type="number" id="guess" min="1" max="99" />
+        <!--The button to submit guess-->
         <button id="submit">Submit Guess</button>
       </div>
       <div>
+        <!--All result messages-->
         <p class="message" id="number-of-guesses"></p>
         <p class="message" id="too-high">You guessed too high. Try again.</p>
         <p class="message" id="too-low">You guessed too low. Try again.</p>
@@ -30,8 +33,10 @@
           Would you like to play again?
         </p>
       </div>
+      <!--The button to reset-->
       <button id="reset">Reset</button>
     </main>
+    <!--Linking js-->
     <script src="index.js"></script>
   </body>
 </html>
